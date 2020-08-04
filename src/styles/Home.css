@@ -1,0 +1,16 @@
+.form-inline {
+    padding-bottom: 15px;
+}
+
+.jumbotron {
+    text-align: center;
+    background-color: white;
+}
+
+th {
+    text-align: center;
+}
+
+td {
+    text-align: center;
+}
