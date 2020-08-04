@@ -1,55 +1,35 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 class Home extends Component {
   state = {
     search: "",
     sortAsc: true,
-    employees: [
-      {
-        image: "1",
-        name: "Tiger Nixon",
-        phone: "706",
-        email: "@outlook",
-        DOB: "xx/xx/xxxx",
-      },
-      {
-        image: "2",
-        name: "Barrett Winters",
-        phone: "404",
-        email: "@gmail",
-        DOB: "xx/xx/xxxx",
-      },
-      {
-        image: "3",
-        name: "Zarrett Winters",
-        phone: "404",
-        email: "@gmail",
-        DOB: "xx/xx/xxxx",
-      },
-      {
-        image: "3",
-        name: "Warrett Winters",
-        phone: "404",
-        email: "@gmail",
-        DOB: "xx/xx/xxxx",
-      },
-    ],
+    employees: [],
+    // filteredEmployees: [],
   };
 
   componentDidMount() {
     // this.sortEmployees();
+    axios.get("https://randomuser.me/api/?results=30").then((response) => {
+      console.log(response);
+      this.setState({
+        employees: response.data.results,
+        // filteredEmployees: response.data.results,
+      });
+    });
   }
 
   sortEmployees = () => {
     function compareAsc(a, b) {
-      if (a.name > b.name) return 1;
-      if (b.name > a.name) return -1;
+      if (a.name.first > b.name.first) return 1;
+      if (b.name.first > a.name.first) return -1;
 
       return 0;
     }
     function compareDesc(a, b) {
-      if (a.name > b.name) return -1;
-      if (b.name > a.name) return 1;
+      if (a.name.first > b.name.first) return -1;
+      if (b.name.first > a.name.first) return 1;
 
       return 0;
     }
@@ -70,10 +50,10 @@ class Home extends Component {
     }
   };
 
-  handleSubmit = (event) =>{
+  handleSubmit = (event) => {
     event.preventDefault();
     this.filterEmployees();
-  }
+  };
 
   handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -84,12 +64,12 @@ class Home extends Component {
 
   filterEmployees = () => {
     const searchTerm = this.state.search.toLowerCase();
-    this.setState ({
-      employees: this.state.employees.filter((employee)=>
-    employee.name.toLowerCase().includes(searchTerm)
+    this.setState({
+      employees: this.state.employees.filter((employee) =>
+        employee.name.first.toLowerCase().includes(searchTerm)
       ),
     });
-  }
+  };
 
   render() {
     return (
@@ -128,11 +108,11 @@ class Home extends Component {
               <tbody>
                 {this.state.employees.map((employee) => (
                   <tr>
-                    <th scope="row">{employee.images}</th>
-                    <td>{employee.name}</td>
+                    <th scope="row">{employee.picture.thumbnail}</th>
+                    <td>{employee.name.first}</td>
                     <td>{employee.phone}</td>
                     <td>{employee.email}</td>
-                    <td>{employee.DOB}</td>
+                    <td>{employee.dob.date}</td>
                   </tr>
                 ))}
               </tbody>
