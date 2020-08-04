@@ -66,8 +66,10 @@ class Home extends Component {
   filterEmployees = () => {
     const searchTerm = this.state.search.toLowerCase();
     this.setState({
-      filteredEmployees: this.state.employees.filter((employee) =>
-        employee.name.first.toLowerCase().includes(searchTerm)
+      filteredEmployees: this.state.employees.filter(
+        (employee) =>
+          employee.name.first.toLowerCase().includes(searchTerm) ||
+          employee.name.last.toLowerCase().includes(searchTerm)
       ),
     });
   };
@@ -78,9 +80,7 @@ class Home extends Component {
         <div className="jumbotron jumbotron-fluid">
           <div className="container">
             <h1 className="display-4">Employee Directory</h1>
-            <p className="lead">
-              Filter by name or search by name!
-            </p>
+            <p className="lead">Filter by name or search by name!</p>
           </div>
         </div>
         <div className="form-inline">
