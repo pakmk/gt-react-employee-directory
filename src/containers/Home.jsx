@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import "../styles/Home.css";
 
 class Home extends Component {
   state = {
@@ -74,7 +75,15 @@ class Home extends Component {
   render() {
     return (
       <div className="container">
-        <div className="col-sm-8">
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <h1 class="display-4">Employee Directory</h1>
+            <p class="lead">
+              Filter by name or search by name!
+            </p>
+          </div>
+        </div>
+        <div className="form-inline">
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
               <input
@@ -97,7 +106,7 @@ class Home extends Component {
               <thead>
                 <tr>
                   <th scope="col">Image</th>
-                  <th scope="col" onClick={this.sortEmployees}>
+                  <th scope="col" id="hoverName" onClick={this.sortEmployees}>
                     Name
                   </th>
                   <th scope="col">Phone</th>
@@ -109,9 +118,11 @@ class Home extends Component {
                 {this.state.filteredEmployees.map((employee) => (
                   <tr>
                     <th scope="row">
-                      <img src={employee.picture.thumbnail} alt="random" />
+                      <img src={employee.picture.medium} alt="random" />
                     </th>
-                    <td>{employee.name.first} {employee.name.last}</td>
+                    <td>
+                      {employee.name.first} {employee.name.last}
+                    </td>
                     <td>{employee.phone}</td>
                     <td>{employee.email}</td>
                     <td>{employee.dob.date}</td>
