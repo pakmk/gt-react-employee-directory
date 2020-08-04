@@ -17,6 +17,20 @@ class Home extends Component {
         email: "@gmail",
         DOB: "xx/xx/xxxx",
       },
+      {
+        image: "3",
+        name: "Garrett Winters",
+        phone: "404",
+        email: "@gmail",
+        DOB: "xx/xx/xxxx",
+      },
+      {
+        image: "3",
+        name: "Garrett Winters",
+        phone: "404",
+        email: "@gmail",
+        DOB: "xx/xx/xxxx",
+      },
     ],
   };
   render() {
@@ -35,20 +49,15 @@ class Home extends Component {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">{this.state.employees[0].images}</th>
-                  <td>{this.state.employees[0].name}</td>
-                  <td>{this.state.employees[0].phone}</td>
-                  <td>{this.state.employees[0].email}</td>
-                  <td>{this.state.employees[0].DOB}</td>
-                </tr>
-                <tr>
-                <th scope="row">{this.state.employees[1].images}</th>
-                  <td>{this.state.employees[1].name}</td>
-                  <td>{this.state.employees[1].phone}</td>
-                  <td>{this.state.employees[1].email}</td>
-                  <td>{this.state.employees[1].DOB}</td>
-                </tr>
+                {this.state.employees.map((employee) => (
+                  <tr>
+                  <th scope="row">{employee.images}</th>
+                  <td>{employee.name}</td>
+                  <td>{employee.phone}</td>
+                  <td>{employee.email}</td>
+                  <td>{employee.DOB}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
