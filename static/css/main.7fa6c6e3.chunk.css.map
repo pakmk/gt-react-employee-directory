@@ -1,1 +1,0 @@
-{"version":3,"sources":["Home.css"],"names":[],"mappings":"AAAA,aACI,mBACJ,CAEA,WAEI,qBACJ,CAMA,iBACI,iBACJ","file":"main.7fa6c6e3.chunk.css","sourcesContent":[".form-inline {\n    padding-bottom: 15px;\n}\n\n.jumbotron {\n    text-align: center;\n    background-color: white;\n}\n\nth {\n    text-align: center;\n}\n\ntd {\n    text-align: center;\n}\n"]}
