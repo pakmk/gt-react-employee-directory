@@ -6,7 +6,7 @@ class Home extends Component {
     search: "",
     sortAsc: true,
     employees: [],
-    // filteredEmployees: [],
+    filteredEmployees: [],
   };
 
   componentDidMount() {
@@ -15,7 +15,7 @@ class Home extends Component {
       console.log(response);
       this.setState({
         employees: response.data.results,
-        // filteredEmployees: response.data.results,
+        filteredEmployees: response.data.results,
       });
     });
   }
@@ -34,17 +34,17 @@ class Home extends Component {
       return 0;
     }
     if (this.state.sortAsc) {
-      const sortedEmployees = this.state.employees.sort(compareAsc);
+      const sortedEmployees = this.state.filteredEmployees.sort(compareAsc);
       // console.log(sortedEmployees);
       this.setState({
-        employees: sortedEmployees,
+        filteredEmployees: sortedEmployees,
         sortAsc: false,
       });
     } else {
-      const sortedEmployees = this.state.employees.sort(compareDesc);
+      const sortedEmployees = this.state.filteredEmployees.sort(compareDesc);
       // console.log(sortedEmployees);
       this.setState({
-        employees: sortedEmployees,
+        filteredEmployees: sortedEmployees,
         sortAsc: true,
       });
     }
@@ -65,7 +65,7 @@ class Home extends Component {
   filterEmployees = () => {
     const searchTerm = this.state.search.toLowerCase();
     this.setState({
-      employees: this.state.employees.filter((employee) =>
+      filteredEmployees: this.state.employees.filter((employee) =>
         employee.name.first.toLowerCase().includes(searchTerm)
       ),
     });
@@ -106,7 +106,7 @@ class Home extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.employees.map((employee) => (
+                {this.state.filteredEmployees.map((employee) => (
                   <tr>
                     <th scope="row">{employee.picture.thumbnail}</th>
                     <td>{employee.name.first}</td>
