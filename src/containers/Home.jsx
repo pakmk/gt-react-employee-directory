@@ -108,8 +108,10 @@ class Home extends Component {
               <tbody>
                 {this.state.filteredEmployees.map((employee) => (
                   <tr>
-                    <th scope="row">{employee.picture.thumbnail}</th>
-                    <td>{employee.name.first}</td>
+                    <th scope="row">
+                      <img src={employee.picture.thumbnail} alt="random" />
+                    </th>
+                    <td>{employee.name.first} {employee.name.last}</td>
                     <td>{employee.phone}</td>
                     <td>{employee.email}</td>
                     <td>{employee.dob.date}</td>
